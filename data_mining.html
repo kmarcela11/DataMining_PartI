@@ -1469,10 +1469,17 @@ Mejor Recall en conjunto de test: 1.0
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
-<span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">cm_lr</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdPu&#39;</span><span class="p">)</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Regresión Logística&#39;</span><span class="p">)</span>
-<span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">cm_knn</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdPu&#39;</span><span class="p">)</span>
+<span class="c1"># KNN</span>
+<span class="n">disp_knn</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">cm_knn</span><span class="p">)</span>
+<span class="n">disp_knn</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdPu&#39;</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;KNN&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># Quitar líneas</span>
+
+<span class="c1"># Regresión Logística</span>
+<span class="n">disp_lr</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">cm_lr</span><span class="p">)</span>
+<span class="n">disp_lr</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdPu&#39;</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Regresión Logística&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1480,7 +1487,7 @@ Mejor Recall en conjunto de test: 1.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/43667a4f1084e56c8045b94ec8d099acd892aede8dd24328a65b2ef64492ba1c.png" src="_images/43667a4f1084e56c8045b94ec8d099acd892aede8dd24328a65b2ef64492ba1c.png" />
+<img alt="_images/bb24dc2b2acde3b6173fc50d19a2719e01aac3a8bf066a69e89c576d282d7753.png" src="_images/bb24dc2b2acde3b6173fc50d19a2719e01aac3a8bf066a69e89c576d282d7753.png" />
 </div>
 </div>
 </section>
@@ -1495,15 +1502,22 @@ Mejor Recall en conjunto de test: 1.0
 <span class="n">y_prob_knn</span> <span class="o">=</span> <span class="n">grid_met</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="n">fpr_knn</span><span class="p">,</span> <span class="n">tpr_knn</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_prob_knn</span><span class="p">)</span>
 <span class="n">roc_auc_knn</span> <span class="o">=</span> <span class="n">auc</span><span class="p">(</span><span class="n">fpr_knn</span><span class="p">,</span> <span class="n">tpr_knn</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span> <span class="p">))</span>
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">color_roc</span> <span class="o">=</span> <span class="s1">&#39;#d81b60&#39;</span>
+
+<span class="c1"># Regresión Logística</span>
 <span class="n">roc_disp_lr</span> <span class="o">=</span> <span class="n">RocCurveDisplay</span><span class="p">(</span><span class="n">fpr</span><span class="o">=</span><span class="n">fpr_lr</span><span class="p">,</span> <span class="n">tpr</span><span class="o">=</span><span class="n">tpr_lr</span><span class="p">,</span> <span class="n">roc_auc</span><span class="o">=</span><span class="n">roc_auc_lr</span><span class="p">,</span> <span class="n">estimator_name</span><span class="o">=</span><span class="s1">&#39;Regresión Logística&#39;</span><span class="p">)</span>
-<span class="n">roc_disp_lr</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;ROC - Regresión Logística&#39;</span><span class="p">)</span>
+<span class="n">roc_disp_lr</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">color_roc</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;ROC - Regresión Logística&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
 
+<span class="c1"># KNN</span>
 <span class="n">roc_disp_knn</span> <span class="o">=</span> <span class="n">RocCurveDisplay</span><span class="p">(</span><span class="n">fpr</span><span class="o">=</span><span class="n">fpr_knn</span><span class="p">,</span> <span class="n">tpr</span><span class="o">=</span><span class="n">tpr_knn</span><span class="p">,</span> <span class="n">roc_auc</span><span class="o">=</span><span class="n">roc_auc_knn</span><span class="p">,</span> <span class="n">estimator_name</span><span class="o">=</span><span class="s1">&#39;KNN&#39;</span><span class="p">)</span>
-<span class="n">roc_disp_knn</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;ROC - KNN&#39;</span><span class="p">)</span>
+<span class="n">roc_disp_knn</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">color_roc</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;ROC - KNN&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1511,7 +1525,7 @@ Mejor Recall en conjunto de test: 1.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8f284a1346e6a575e7b8e46106c57b95491ea4d80d718078af9cb2ffee980a3d.png" src="_images/8f284a1346e6a575e7b8e46106c57b95491ea4d80d718078af9cb2ffee980a3d.png" />
+<img alt="_images/7d852b922abeffccb00a944ce35029e38d70f0ac3af3575acdb460bc48de4dfa.png" src="_images/7d852b922abeffccb00a944ce35029e38d70f0ac3af3575acdb460bc48de4dfa.png" />
 </div>
 </div>
 </section>
